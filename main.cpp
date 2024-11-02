@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <map>
 
 #define KEY "key"
 #define SIZE 4
@@ -33,13 +34,12 @@ int main(int argc, char *argv[])
 
     fstream inputFile(fileName, ios::binary | ios_base::in | ios_base::out);
 
-    char *command = argv[1]; // swtich case
-    if (strcmp(command, "--encrypt") == 0)
+    char *command = argv[1];
+    if ("--encrypt" == string(command))
     {
         return encrypt(inputFile, KEY);
     }
-
-    if (strcmp(command, "--decrypt") == 0)
+    if ("--decrypt" == string(command))
     {
         return decrypt(inputFile, KEY);
     }
